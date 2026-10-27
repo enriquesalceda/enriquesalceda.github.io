@@ -1,0 +1,200 @@
+<title>Enrique Salceda</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: a fixed left column with name + nav, a single reading column on the right; stacks on phones. */
+  :root {
+    --bg: #eef1f3;
+    --surface: #f8f9fa;
+    --fg: #1b2228;
+    --muted: #5a6670;
+    --line: #cfd6db;
+    --accent: #0f6e68;
+    --accent-soft: #d7ebe8;
+    --display: "Newsreader", Georgia, "Times New Roman", serif;
+    --body: "Work Sans", "Helvetica Neue", Arial, sans-serif;
+    --mono: "JetBrains Mono", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141a1f; --surface: #1c242a; --fg: #e6ebee; --muted: #9aa7b0;
+      --line: #2e3a42; --accent: #5fc2b9; --accent-soft: #1d3a38; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141a1f; --surface: #1c242a; --fg: #e6ebee; --muted: #9aa7b0;
+    --line: #2e3a42; --accent: #5fc2b9; --accent-soft: #1d3a38; color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--fg);
+    font-family: var(--body); font-size: 17px; line-height: 1.6;
+    padding-block: 0;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .page {
+    max-width: 1080px; margin: 0 auto;
+    display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 64px;
+    padding-block: 56px 80px;
+  }
+  @media (max-width: 760px) {
+    .page { grid-template-columns: 1fr; gap: 40px; padding-block: 32px 64px; }
+    .side { position: static !important; }
+  }
+
+  /* Left column */
+  .side { position: sticky; top: calc(32px + env(safe-area-inset-top, 0px)); align-self: start; display: grid; gap: 28px; }
+  .name {
+    font-family: var(--display); font-weight: 500; font-size: 2.2rem; line-height: 1.05;
+    letter-spacing: -0.01em; text-wrap: balance; margin: 0;
+  }
+  .role { color: var(--muted); margin: 6px 0 0; font-size: 0.95rem; }
+  .nav { display: grid; gap: 6px; list-style: none; padding: 0; margin: 0; font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.04em; text-transform: uppercase; }
+  .nav a { color: var(--fg); text-decoration: none; padding: 4px 0; border-left: 2px solid transparent; padding-left: 10px; display: inline-block; }
+  .nav a:hover { border-left-color: var(--accent); color: var(--accent); }
+  .status { font-size: 0.9rem; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: none; }
+
+  /* Right column */
+  .main { display: grid; gap: 72px; min-width: 0; }
+  section { display: grid; gap: 20px; }
+  .eyebrow { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0; }
+  h2 { font-family: var(--display); font-weight: 400; font-size: 1.8rem; line-height: 1.15; margin: 0; text-wrap: balance; }
+  .lede { font-family: var(--display); font-size: clamp(1.7rem, 3.2vw, 2.5rem); line-height: 1.2; font-weight: 400; margin: 0; max-width: 24ch; text-wrap: balance; }
+  .lede em { font-style: italic; color: var(--accent); }
+  p { margin: 0; max-width: 62ch; }
+  .muted { color: var(--muted); }
+  .fill { background: var(--accent-soft); color: var(--fg); padding: 0 .3em; border-radius: 3px; }
+
+  .projects { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); list-style: none; padding: 0; margin: 0; }
+  .projects li { background: var(--surface); padding: 22px 24px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 24px; min-width: 0; }
+  .projects h3 { margin: 0; font-size: 1.05rem; font-weight: 600; }
+  .projects p { grid-column: 1 / -1; color: var(--muted); font-size: 0.95rem; }
+  .projects .year { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .projects a { color: var(--fg); text-decoration: none; }
+  .projects a:hover { color: var(--accent); }
+
+  .writing { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
+  .writing li { display: flex; justify-content: space-between; gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+  .writing li:first-child { border-top: 1px solid var(--line); }
+  .writing a { color: var(--fg); text-decoration: none; }
+  .writing a:hover { color: var(--accent); }
+  .writing time { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  .contact { display: grid; gap: 12px; }
+  .row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+  .email { font-family: var(--mono); font-size: 0.95rem; user-select: all; }
+  button.copy {
+    font: inherit; font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase;
+    background: transparent; color: var(--accent); border: 1px solid var(--accent); border-radius: 999px;
+    padding: 5px 12px; cursor: pointer;
+  }
+  button.copy:hover { background: var(--accent-soft); }
+  .links { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 0.95rem; }
+
+  footer { color: var(--muted); font-size: 0.85rem; font-family: var(--mono); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding-top: 24px; border-top: 1px solid var(--line); }
+</style>
+
+<div class="page">
+  <aside class="side">
+    <div>
+      <h1 class="name">Enrique Salceda</h1>
+      <p class="role">Software developer · Sydney, Australia</p>
+    </div>
+    <nav aria-label="Sections">
+      <ul class="nav">
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#writing">Writing</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <p class="status"><span class="dot" aria-hidden="true"></span> Open to interesting projects</p>
+  </aside>
+
+  <main class="main">
+    <section id="about">
+      <p class="lede">I build software for people, and I like the parts <em>most people skip</em>: the docs, the edge cases, the second draft.</p>
+      <p>Hi, I'm Enrique. By day I write code; the rest of the time I tinker with side projects, read more than I finish, and try to get a little better at explaining things. This is my corner of the web for the things I make and the notes I keep.</p>
+      <p class="muted">Everything on this page in <span class="fill">highlighted text</span> is a placeholder. Swap it for your own words, your real projects and your real links.</p>
+    </section>
+
+    <section id="work">
+      <p class="eyebrow">Selected work</p>
+      <h2>Things I've built and shipped</h2>
+      <ul class="projects">
+        <li>
+          <h3><a href="#work"><span class="fill">Hoop Runs Today</span></a></h3>
+          <span class="year">2026</span>
+          <p><span class="fill">Finds pickup basketball games near you and tells you when the court is actually full. Built with Expo and a small Postgres backend.</span></p>
+        </li>
+        <li>
+          <h3><a href="#work"><span class="fill">Transformation</span></a></h3>
+          <span class="year">2026</span>
+          <p><span class="fill">A personal habit tracker that cares more about trends than streaks. Weekly reviews, no guilt.</span></p>
+        </li>
+        <li>
+          <h3><a href="#work"><span class="fill">Claude Kit</span></a></h3>
+          <span class="year">2025</span>
+          <p><span class="fill">A collection of skills, hooks and commands I use day to day when working with Claude Code.</span></p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="writing">
+      <p class="eyebrow">Writing</p>
+      <h2>Notes, mostly to my future self</h2>
+      <ul class="writing">
+        <li><a href="#writing"><span class="fill">What I learned shipping a side project in a weekend</span></a><time datetime="2026-09">Sep 2026</time></li>
+        <li><a href="#writing"><span class="fill">A calmer way to review pull requests</span></a><time datetime="2026-06">Jun 2026</time></li>
+        <li><a href="#writing"><span class="fill">Notes on naming things</span></a><time datetime="2026-02">Feb 2026</time></li>
+      </ul>
+    </section>
+
+    <section id="contact" class="contact">
+      <p class="eyebrow">Contact</p>
+      <h2>Say hello</h2>
+      <p>The fastest way to reach me is email. I read everything, and I reply to most of it.</p>
+      <div class="row">
+        <span class="email" id="email">enriquesalceda@gmail.com</span>
+        <button class="copy" id="copy-email" type="button">Copy</button>
+      </div>
+      <div class="links">
+        <a href="https://github.com/" rel="me"><span class="fill">GitHub</span></a>
+        <a href="https://www.linkedin.com/" rel="me"><span class="fill">LinkedIn</span></a>
+        <a href="https://x.com/" rel="me"><span class="fill">X / Twitter</span></a>
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2026 Enrique Salceda</span>
+      <span>Set in Newsreader and Work Sans</span>
+    </footer>
+  </main>
+</div>
+
+<script>
+  (function () {
+    var btn = document.getElementById('copy-email');
+    var email = document.getElementById('email');
+    if (!btn || !email) return;
+    btn.addEventListener('click', function () {
+      var text = email.textContent.trim();
+      var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1800); };
+      var fallback = function () {
+        var range = document.createRange(); range.selectNodeContents(email);
+        var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+        btn.textContent = 'Selected';
+        setTimeout(function () { btn.textContent = 'Copy'; }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else { fallback(); }
+    });
+  })();
+</script>
