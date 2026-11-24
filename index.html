@@ -1,107 +1,7 @@
 <title>Enrique Salceda</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap">
-<style>
-  /* Layout: one reading column set left, with short notes hanging in the right margin; notes fold inline on phones. */
-  :root {
-    --paper: #fbfaf6;
-    --ink: #161616;
-    --muted: #6e6c66;
-    --rule: #d8d5cb;
-    --placeholder: #a9a69b;
-    --serif: "EB Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --paper: #16171a; --ink: #e6e3da; --muted: #9b9890; --rule: #33353a; --placeholder: #6c6a63; color-scheme: dark;
-    }
-  }
-  :root[data-theme="dark"] {
-    --paper: #16171a; --ink: #e6e3da; --muted: #9b9890; --rule: #33353a; --placeholder: #6c6a63; color-scheme: dark;
-  }
-
-  * { box-sizing: border-box; }
-  body {
-    background: var(--paper); color: var(--ink);
-    font-family: var(--serif); font-size: 1.25rem; line-height: 1.55;
-    font-feature-settings: "onum" 1, "kern" 1, "liga" 1;
-    padding-block: 0;
-    padding-left: max(16px, env(safe-area-inset-left, 0px));
-    padding-right: max(16px, env(safe-area-inset-right, 0px));
-  }
-  @media (max-width: 760px) { body { font-size: 1.125rem; } }
-
-  a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-decoration-color: var(--muted); text-underline-offset: 0.16em; }
-  a:hover { text-decoration-color: var(--ink); }
-  a:focus-visible, button:focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
-
-  .page { max-width: 1040px; margin: 0 auto; padding-block: 6rem 5rem; }
-  @media (max-width: 760px) { .page { padding-block: 3rem 4rem; } }
-
-  /* The text column is 58% of the page; notes live in the remaining margin. */
-  .col { width: 58%; min-width: 0; }
-  @media (max-width: 760px) { .col { width: 100%; } }
-
-  header { display: grid; gap: 0.35rem; margin-bottom: 4rem; }
-  h1 { font-size: 2.6rem; font-weight: 400; line-height: 1.1; margin: 0; letter-spacing: 0.005em; text-wrap: balance; }
-  .sub { font-style: italic; color: var(--muted); margin: 0; font-size: 1.25rem; }
-
-  hr { border: 0; border-top: 1px solid var(--rule); margin: 0; }
-
-  section { position: relative; padding-block: 3rem 0; }
-  h2 {
-    font-size: 1.05rem; font-weight: 500; font-variant-caps: all-small-caps; letter-spacing: 0.08em;
-    margin: 0 0 1.25rem; color: var(--muted);
-  }
-  p { margin: 0 0 1.1rem; max-width: 36em; text-wrap: pretty; }
-  p:last-child { margin-bottom: 0; }
-  .lede { font-size: 1.6rem; line-height: 1.3; font-style: italic; margin-bottom: 1.5rem; max-width: 24em; text-wrap: balance; }
-  @media (max-width: 760px) { .lede { font-size: 1.35rem; } }
-
-  /* Margin notes */
-  .entry { position: relative; margin-bottom: 1.6rem; }
-  .entry:last-child { margin-bottom: 0; }
-  .note {
-    position: absolute; left: calc(100% + 3rem); top: 0.2em; width: 14rem;
-    font-size: 0.95rem; line-height: 1.4; color: var(--muted); font-variant-numeric: oldstyle-nums;
-  }
-  .note em { font-style: italic; }
-  @media (max-width: 760px) {
-    .note { position: static; display: block; width: auto; margin-bottom: 0.2rem; }
-  }
-  .entry h3 { font-size: inherit; font-weight: 500; display: inline; margin: 0; }
-  .entry h3 a { text-decoration: none; }
-  .entry h3 a:hover { text-decoration: underline; }
-  .entry h3 + p, .entry h3 + span + p { display: inline; }
-  .sc { font-variant-caps: small-caps; letter-spacing: 0.03em; }
-
-  /* Writing list: hanging dates */
-  .list { list-style: none; padding: 0; margin: 0; }
-  .list li { position: relative; padding-block: 0.45rem; border-top: 1px solid var(--rule); }
-  .list li:last-child { border-bottom: 1px solid var(--rule); }
-  .list a { text-decoration: none; }
-  .list a:hover { text-decoration: underline; }
-  .list time { position: absolute; left: calc(100% + 3rem); top: 0.45rem; width: 14rem; color: var(--muted); font-size: 0.95rem; font-variant-numeric: oldstyle-nums; }
-  @media (max-width: 760px) { .list time { position: static; display: block; width: auto; font-size: 0.9rem; } }
-
-  /* Contact */
-  .contact-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 1rem; }
-  .email { user-select: all; }
-  button.copy {
-    font: inherit; font-size: 0.9rem; font-style: italic; color: var(--muted);
-    background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.16em;
-  }
-  button.copy:hover { color: var(--ink); }
-  .links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; margin-top: 1rem; }
-
-  footer { margin-top: 4rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: 0.95rem; font-style: italic; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 1rem; }
-
-  /* Placeholder text awaiting real content: a faint dotted underline. */
-  .ph { text-decoration: underline dotted var(--placeholder); text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
-  .legend { font-size: 0.95rem; color: var(--muted); font-style: italic; }
-
-  @media (prefers-reduced-motion: no-preference) { button.copy { transition: color 120ms; } }
-</style>
+<link rel="stylesheet" href="/assets/site.css">
 
 <div class="page">
   <div class="col">
@@ -140,10 +40,11 @@
     <section id="writing">
       <h2>Writing</h2>
       <ul class="list">
-        <li><a href="#writing"><span class="ph">What I learned shipping a side project in a weekend</span></a><time datetime="2026-09">September 2026</time></li>
-        <li><a href="#writing"><span class="ph">A calmer way to review pull requests</span></a><time datetime="2026-06">June 2026</time></li>
-        <li><a href="#writing"><span class="ph">Notes on naming things</span></a><time datetime="2026-02">February 2026</time></li>
+        <li><a href="/blog/post/shipping-a-side-project-in-a-weekend/"><span class="ph">What I learned shipping a side project in a weekend</span></a><time datetime="2026-09">September 2026</time></li>
+        <li><a href="/blog/post/a-calmer-way-to-review-pull-requests/"><span class="ph">A calmer way to review pull requests</span></a><time datetime="2026-06">June 2026</time></li>
+        <li><a href="/blog/post/notes-on-naming-things/"><span class="ph">Notes on naming things</span></a><time datetime="2026-02">February 2026</time></li>
       </ul>
+      <p class="legend" style="margin-top:1rem"><a href="/blog/posts/">All posts</a></p>
     </section>
 
     <section id="contact">
